@@ -4,15 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { documentsReducer } from './state/documents.reducer';
+import { collectionReducer } from './state/collection.reducer';
+import { DocumentListComponent } from './document-list/document-list.component';
+import { DocumentCollectionComponent } from './document-collection/document-collection.component';
+
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserModule,
+      StoreModule.forRoot({ documents: documentsReducer, collection: collectionReducer }),
+      HttpClientModule,
   ],
   providers: [],
+  declarations: [AppComponent, DocumentListComponent, DocumentCollectionComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
