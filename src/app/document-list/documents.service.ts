@@ -12,9 +12,9 @@ export class DocumentsService {
  
   getDocuments(): Observable<Array<Document>> {
     return this.http
-      .get<{ items: Document[] }>(
-        'https://www.googleapis.com/books/v1/volumes?maxResults=5&orderBy=relevance&q=oliver%20sacks'
+      .get<Document[]>(
+        'https://localhost:7153/api/Documents'
       )
-      .pipe(map((documents) => documents.items || []));
+      .pipe(map((documents) => documents || []));
   }
 }

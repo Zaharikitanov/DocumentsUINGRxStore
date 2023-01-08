@@ -7,6 +7,6 @@ import { Document } from '../document-list/documents.module';
   styleUrls: ['./document-collection.component.scss']
 })
 export class DocumentCollectionComponent {
-  @Input() documents: ReadonlyArray<Document> = [];
+  @Input() documents: ReadonlyArray<Document> | any = [];
   @Output() remove = new EventEmitter<string>();
 }

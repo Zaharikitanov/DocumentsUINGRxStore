@@ -14,7 +14,10 @@ export class AppComponent {
   documents$ = this.store.select(selectDocuments);
   documentCollection$ = this.store.select(selectDocumentCollection);
  
-  onAdd(documentId: string) {
+  onAdd(documentTest: Event) {
+    console.log(documentTest.target);
+    
+    let documentId = "";
     this.store.dispatch(DocumentsActions.addDocument({ documentId }));
   }
  
@@ -24,11 +27,11 @@ export class AppComponent {
  
   constructor(private documentsService: DocumentsService, private store: Store) {}
  
-  ngOnInit() {
+  ngOnInit() {    
     this.documentsService
       .getDocuments()
       .subscribe((documents) =>
         this.store.dispatch(DocumentsApiActions.retrievedDocumentsList({ documents }))
-      );
+      );      
   }
 }
