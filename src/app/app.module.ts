@@ -9,7 +9,6 @@ import { StoreModule } from '@ngrx/store';
 import { documentsReducer } from './state/documents.reducer';
 import { collectionReducer } from './state/collection.reducer';
 import { DocumentListComponent } from './document-list/document-list.component';
-import { DocumentCollectionComponent } from './document-collection/document-collection.component';
 
 @NgModule({
   imports: [
@@ -20,7 +19,7 @@ import { DocumentCollectionComponent } from './document-collection/document-coll
       HttpClientModule,
   ],
   providers: [],
-  declarations: [AppComponent, DocumentListComponent, DocumentCollectionComponent],
+  declarations: [AppComponent, DocumentListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
