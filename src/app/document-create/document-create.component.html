@@ -1,0 +1,28 @@
+<h1 class="text-center">Create document</h1>
+<div class="d-flex justify-content-center">
+    <div id="create-document-form" class="p-4">
+        <div class="row">
+            <div class="col">
+                <label for="documentNameInput">Document name</label>
+                <input [(ngModel)]="documentName" class="form-control"  type="text" id="documentNameInput" placeholder="Name" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="versionInput">Version</label>
+                <input [(ngModel)]="version" class="form-control" type="text" id="versionInput" placeholder="Version" />
+            </div>
+            <div class="col-md-6">
+                <label for="fileSizeInput">File size</label>
+                <input [(ngModel)]="fileSize" class="form-control" type="text" id="fileSizeInput" placeholder="Size (in bytes)" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="fileNameInput">File name</label>
+                <input [(ngModel)]="fileName" class="form-control" type="text" id="fileNameInput" placeholder="File name" />
+            </div>
+        </div>
+        <button (click)="createDocument()" type="submit" class="btn btn-primary mt-2">Create</button>
+    </div>
+</div>
