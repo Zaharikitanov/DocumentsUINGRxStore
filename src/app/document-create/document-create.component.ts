@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Document } from '../document-list/documents.module';
 import { v4 as uuidv4 } from 'uuid';
 import { Store } from '@ngrx/store';
 import { DocumentsActions } from '../state/documents.actions';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-document-create',
@@ -19,10 +19,9 @@ export class DocumentCreateComponent {
   fileSize: number;
 
   constructor(
-    // private service: DocumentsService,
     public toastr: ToastrService,
-    private router: Router,
-    private store: Store
+    private store: Store,
+    public activeModal: NgbActiveModal
   ) { }
 
   createDocument(): void {
@@ -40,11 +39,11 @@ export class DocumentCreateComponent {
         };
         
       this.store.dispatch(DocumentsActions.addDocument({ document: newDocument }));
-      // this.router.navigateByUrl('/');
         
     } else {
       this.toastr.warning("All fields are required");
     }    
+    this.activeModal.close();
   }
 
   private checkStringInput(input: string): boolean {
