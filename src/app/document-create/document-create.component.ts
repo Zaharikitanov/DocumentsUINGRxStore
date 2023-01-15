@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Document } from '../document-list/documents.module';
+import { v4 as uuidv4 } from 'uuid';
+import { Store } from '@ngrx/store';
+import { DocumentsActions } from '../state/documents.actions';
 
 @Component({
   selector: 'app-document-create',
@@ -18,7 +21,8 @@ export class DocumentCreateComponent {
   constructor(
     // private service: DocumentsService,
     public toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) { }
 
   createDocument(): void {
@@ -28,21 +32,18 @@ export class DocumentCreateComponent {
       this.checkNumberInput(this.fileSize) ){
 
         let newDocument: Document = {
+          id: uuidv4(),
           documentName: this.documentName,
           version: this.version,
           fileName: this.fileName,
           fileSize: this.fileSize
         };
         
-      //   this.service.createDocument(newDocument)
-      //   .subscribe((result) => {
-      //     this.router.navigateByUrl('/');
-      //   }, err => {
-      //     console.log(err);
-      // });
+      this.store.dispatch(DocumentsActions.addDocument({ document: newDocument }));
+      // this.router.navigateByUrl('/');
         
     } else {
-      // this.toastr.warning("All fields are required");
+      this.toastr.warning("All fields are required");
     }    
   }
 
@@ -59,5 +60,4 @@ export class DocumentCreateComponent {
     }
     return false;
   }
-
 }

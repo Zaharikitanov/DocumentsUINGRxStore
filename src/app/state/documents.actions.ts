@@ -4,8 +4,8 @@ import { Document } from '../document-list/documents.module';
 export const DocumentsActions = createActionGroup({
   source: 'Documents',
   events: {
-    'Add Document': props<{ documentId: string }>(),
-    'Remove Document': props<{ documentId: string }>(),
+    'Add Document': props<{ document: Document }>(),
+    'Remove Document': props<{ id: string }>(),
   },
 });
  

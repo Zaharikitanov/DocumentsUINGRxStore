@@ -5,12 +5,12 @@ export const initialState: ReadonlyArray<string> = [];
  
 export const collectionReducer = createReducer(
   initialState,
-  on(DocumentsActions.removeDocument, (state, { documentId }) =>
-    state.filter((id) => id !== documentId)
+  on(DocumentsActions.removeDocument, (state, { id }) =>
+    state.filter((id) => id !== id)
   ),
-  on(DocumentsActions.addDocument, (state, { documentId }) => {
-    if (state.indexOf(documentId) > -1) return state;
+  // on(DocumentsActions.addDocument, (state, { document }) => {
+  //   if (state.indexOf(document) > -1) return state;
  
-    return [...state, documentId];
-  })
+  //   return [...state, document];
+  // })
 );

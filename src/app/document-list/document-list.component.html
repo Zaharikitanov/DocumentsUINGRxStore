@@ -3,6 +3,8 @@
   <a class="btn btn-success mx-4" routerLink="/document/create">Create document</a>
 </div>
 
+<app-document-create></app-document-create>
+
 <div class="d-flex justify-content-center">
   <table>
     <tr>
@@ -17,7 +19,7 @@
       <td>{{ document.version }}</td>
       <td>{{ document.fileName }}</td>
       <td>{{ document.fileSize }}</td>
-      <td><button class="btn btn-danger">Delete</button></td>
+      <td><button class="btn btn-danger" (click)="removeDocument(document.id!)">Delete</button></td>
     </tr>
   </table>
 </div>
